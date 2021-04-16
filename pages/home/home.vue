@@ -1,5 +1,8 @@
 <template>
   <view>
+    <view class="search-box">
+      <my-search @searchClick="toSearchhandler"></my-search>
+    </view>
     <swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" circular="true">
       <swiper-item v-for="(item,i) in swiperList">
         <navigator class="swiper-item" :url="'/subpkg/goods_detail/goods_detail?goods_id='+item.goods_id">
@@ -79,6 +82,11 @@
         })
         this.floorList=res.message
         console.log(this.floorList)
+      },
+      toSearchhandler(){
+        uni.navigateTo({
+          url:'/subpkg/search/search'
+        })
       }
     }
   }
@@ -95,8 +103,6 @@
       height: 100%;
     }
   }
-
-  ,
   .nav-list {
     display: flex;
     justify-content: space-around;
@@ -124,7 +130,10 @@
         }
       }
     }
-    
   }
- 
+ .search-box{
+   position: sticky;
+   top: 0;
+   z-index: 999;
+ }
 </style>
