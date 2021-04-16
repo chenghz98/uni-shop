@@ -45,7 +45,7 @@
         const {
           data: res
         } = await uni.$http.get('/api/public/v1/categories')
-        if (res.meta.status !== 200) return uni.showMsg()
+        if (res.meta.status !== 200) return uni.$showMsg('获取数据失败')
         this.cateList = res.message
         this.cateLevel2 = this.cateList[0].children
       },
